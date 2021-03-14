@@ -30,6 +30,14 @@ public class Product {
         return productDto;
     }
 
+    public ProductIntoBasket convertToProductIntoBasket(){
+        ProductIntoBasket productIntoBasket = new ProductIntoBasket();
+        productIntoBasket.setName(this.getName());
+        productIntoBasket.setCost(this.getCost());
+        return productIntoBasket;
+    }
+
+
 
     public Long getId() {
         return id;

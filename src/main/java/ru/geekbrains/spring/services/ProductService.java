@@ -2,6 +2,7 @@ package ru.geekbrains.spring.services;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -21,6 +22,9 @@ public class ProductService {
 
     @Autowired
     private ProductRepo productRepo;
+
+    @Autowired
+    private BasketService basketService;
 
     @Transactional
     public Page<ProductDto> getAll(int page, int size, SortDir sortName, SortDir sortCost){
@@ -72,6 +76,12 @@ public class ProductService {
     public void delete(Long id){
         productRepo.deleteById(id);
     }
+
+    public void buy(Long id){
+        basketService.saveOrUpdate(getId(id));
+        delete(id);
+    }
+
 
     public List<Product> findLessThan(int max){
         return productRepo.findProductsByCostLessThan(max);

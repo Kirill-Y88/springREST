@@ -15,5 +15,4 @@ public interface ProductRepo extends JpaRepository<Product, Long> {
     List<Product>findProductsByCostBetween(int min, int max);
     List<Product> findProductsByNameStartsWith(String name);
 
-
 }

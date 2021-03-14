@@ -30,3 +30,4 @@ insert into products (name, cost) values
 ('Apple', 52),
 ('Meat', 56),
 ('Cheese', 88);
+create table productsintobasket (id bigserial primary key, name varchar(255), cost int);
