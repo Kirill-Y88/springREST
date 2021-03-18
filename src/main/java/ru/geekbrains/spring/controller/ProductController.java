@@ -23,7 +23,7 @@ public class ProductController {
 
     @GetMapping()
     public Page<ProductDto> getAll(@RequestParam(defaultValue = "0") Integer page,
-                                @RequestParam(defaultValue = "10") Integer size,
+                                @RequestParam(defaultValue = "35") Integer size,
                                 @RequestParam(required = false)SortDir sortName,
                                 @RequestParam(required = false)SortDir sortCost
                                 )  {
@@ -52,9 +52,15 @@ public class ProductController {
     }*/
 
     @GetMapping("/{id}")
+    public List<Product> getAllorder (Long id){
+        return productService.getOrder(id);
+    }
+
+   /* @GetMapping("/{id}")
     public ProductDto getProductById(@PathVariable Long id){
         return (productService.getId(id)).convertToDto();
     }
+*/
 
     @PostMapping
     public ProductDto addProduct(@RequestBody ProductDto productDto){

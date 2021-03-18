@@ -1,9 +1,13 @@
-create table products (id bigserial primary key, name varchar(255), cost int);
+create table orders (id bigserial primary key, username varchar(255));
+insert into orders (username) values
+('user1'),
+('user2');
+create table products (id bigserial primary key, name varchar(255), cost int, order_id int REFERENCES orders (id) );
 insert into products (name, cost) values
 ('Potato', 80),
-('Potato', 82),
+('Potato', 82, 1),
 ('Potato', 85),
-('Orange', 10),
+('Orange', 10, 1),
 ('Onion', 99),
 ('Pizza', 50),
 ('Chicken', 75),
