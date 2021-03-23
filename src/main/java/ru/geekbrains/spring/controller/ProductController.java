@@ -10,6 +10,7 @@ import ru.geekbrains.spring.model.Product;
 import ru.geekbrains.spring.model.ProductDto;
 import ru.geekbrains.spring.model.SortDir;
 import ru.geekbrains.spring.services.ProductService;
+import ru.geekbrains.spring.services.Product_ordersService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
+
 
     @GetMapping()
     public Page<ProductDto> getAll(@RequestParam(defaultValue = "0") Integer page,
@@ -51,10 +53,10 @@ public class ProductController {
         return errList;
     }*/
 
-    @GetMapping("/{id}")
+   /* @GetMapping("/{id}")
     public List<Product> getAllorder (Long id){
         return productService.getOrder(id);
-    }
+    }*/
 
    /* @GetMapping("/{id}")
     public ProductDto getProductById(@PathVariable Long id){

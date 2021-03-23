@@ -2,6 +2,7 @@ package ru.geekbrains.spring.model;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "products")
@@ -17,16 +18,11 @@ public class Product {
     @Column(name = "cost")
     private int cost;
 
-    @Column(name = "order_id")
-    private int order_id;
-
-    public int getOrder_id() {
-        return order_id;
-    }
-
-    public void setOrder_id(int order_id) {
-        this.order_id = order_id;
-    }
+    @ManyToMany
+    @JoinTable(name = "product_orders",
+                    joinColumns = @JoinColumn(name = "product_id"),
+                    inverseJoinColumns = @JoinColumn(name = "order_id"))
+    public List<Order> orders;
 
     public Product() {
     }
@@ -36,10 +32,20 @@ public class Product {
         this.cost = cost;
     }
 
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+
     public ProductDto convertToDto(){
         ProductDto productDto = new ProductDto(this);
         return productDto;
     }
+
+
 
 
     public Long getId() {

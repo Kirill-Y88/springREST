@@ -64,9 +64,9 @@ public class ProductService {
         return productRepo.findById(id).get();
     }
 
-    public List<Product> getOrder(Long id){
+   /* public List<Product> getOrder(Long id){
         return productRepo.findProductsByOrder_id(id);
-    }
+    }*/
 
     public Product saveOrUpdate(Product product){
         return productRepo.save(product);
