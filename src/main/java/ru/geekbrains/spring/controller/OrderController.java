@@ -2,10 +2,7 @@ package ru.geekbrains.spring.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.spring.model.Order;
 import ru.geekbrains.spring.model.OrderDto;
 import ru.geekbrains.spring.model.Product;
@@ -46,12 +43,11 @@ public class OrderController {
         return orderService.getProductOrder(idOrder);
     }
 
-
-   /* @GetMapping("/{id}")
-    public List<Product> getAllorder(Long id){
-        return productController.getAllorder(id);
-    }*/
-
+    @GetMapping("/user/{idOrder}/{idProduct}/delete")
+    public List<ProductDto> deleteProduct (@PathVariable Long idProduct, @PathVariable Long idOrder){
+        product_ordersService.delete(idProduct,idOrder);
+        return orderService.getProductOrder(idOrder);
+    }
 
 
 

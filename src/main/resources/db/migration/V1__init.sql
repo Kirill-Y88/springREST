@@ -35,7 +35,7 @@ insert into products (name, cost) values
 ('Apple', 52),
 ('Meat', 56),
 ('Cheese', 88);
-create table product_orders (product_id int REFERENCES products(id), order_id int REFERENCES orders(id));
+create table product_orders (id bigserial primary key, product_id int REFERENCES products(id), order_id int REFERENCES orders(id));
 insert into product_orders (product_id, order_id) values
 (1, 1),
 (10, 1),
